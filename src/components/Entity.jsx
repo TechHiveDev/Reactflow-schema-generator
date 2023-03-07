@@ -3,14 +3,37 @@ const Entity = () => {
     <table>
       <th colSpan={3}>Student</th>
       <tr>
-        <td>Hello</td>
-        <td>Hello</td>
-        <td>Hello</td>
+        <td>
+          <input type="text" style={{ display: "block" }} />
+        </td>
+        <td>
+          <input type="text" style={{ display: "block" }} />
+        </td>
+        <td>
+          <input type="text" style={{ display: "block" }} />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input type="text" style={{ display: "block" }} />
+        </td>
+        <td>
+          <input type="text" style={{ display: "block" }} />
+        </td>
+        <td>
+          <input type="text" style={{ display: "block" }} />
+        </td>
       </tr>
       <tr className="last-row">
-        <td>Hello</td>
-        <td>Hello</td>
-        <td>Hello</td>
+        <td>
+          <input type="text" style={{ display: "block" }} />
+        </td>
+        <td>
+          <input type="text" style={{ display: "block" }} />
+        </td>
+        <td>
+          <input type="text" style={{ display: "block" }} />
+        </td>
       </tr>
     </table>
   );

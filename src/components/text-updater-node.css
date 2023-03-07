@@ -6,8 +6,12 @@
   padding: 0;
 }
 
+.entity-box {
+  border: 2px solid black;
+  border-radius: px;
+}
+
 .text-updater-node {
-  border: 1px solid #eee;
   padding: 5px;
   border-radius: 5px;
   background: white;
@@ -20,8 +24,7 @@
 }
 
 table,
-th,
-td:first-child {
+th {
   border: 2px solid black;
   border-width: 2px;
   border-collapse: collapse;
@@ -32,14 +35,8 @@ th {
   padding: 1rem 2rem;
 }
 
-table {
-  border-radius: 3px;
-}
-
 td {
-  font-family: "IBM Plex Mono";
   border: 2px solid #d1d5db;
-  padding: 0.75rem 1.2rem;
 }
 
 td:first-child {
@@ -53,6 +50,26 @@ tr:last-child td {
   border-bottom: 2px solid black;
 }
 
-th {
+input[type="text"],
+input[type="text"]:focus,
+input[type="text"]:active {
+  outline: none;
+  border: 0;
+}
+
+tr td:first-child input[type="text"] {
+  font-family: "Inter", sans-serif;
   font-weight: 800;
+}
+
+input[type="text"] {
+  font-family: "IBM Plex Mono", sans-serif;
+  font-size: 12px;
+  width: 100px;
+  padding: 0.5rem 0.14rem;
+  margin-left: 0.2rem;
+}
+
+tr td:last-child input[type="text"] {
+  width: 200px;
 }
