@@ -1,0 +1,58 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;1,300&family=Inter:wght@500;800&family=Poppins:wght@100;500&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.text-updater-node {
+  border: 1px solid #eee;
+  padding: 5px;
+  border-radius: 5px;
+  background: white;
+}
+
+.text-updater-node label {
+  display: block;
+  color: #777;
+  font-size: 12px;
+}
+
+table,
+th,
+td:first-child {
+  border: 2px solid black;
+  border-width: 2px;
+  border-collapse: collapse;
+  font-family: "Inter", sans-serif;
+}
+th {
+  background-color: #e5e7eb;
+  padding: 1rem 2rem;
+}
+
+table {
+  border-radius: 3px;
+}
+
+td {
+  font-family: "IBM Plex Mono";
+  border: 2px solid #d1d5db;
+  padding: 0.75rem 1.2rem;
+}
+
+td:first-child {
+  border-left: 2px solid black;
+}
+td:last-child {
+  border-right: 2px solid black;
+}
+
+tr:last-child td {
+  border-bottom: 2px solid black;
+}
+
+th {
+  font-weight: 800;
+}

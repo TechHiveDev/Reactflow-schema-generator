@@ -7,14 +7,21 @@ import ReactFlow, {
   addEdge,
 } from "reactflow";
 import { useState, useCallback } from "react";
+import TextUpdaterNode from "./TextUpdaterNode.jsx";
+import "./text-updater-node.css";
+
+const nodeTypes = { textUpdater: TextUpdaterNode };
 
 const Flow = () => {
+  console.log("loaded");
   const initialEdges = [{ id: "1-2", source: "1", target: "2" }];
   const initialNodes = [
     {
       id: "1",
       position: { x: 0, y: 0 },
       data: { label: "Hello" },
+      type: "textUpdater",
+      data: { value: 123 },
     },
     {
       id: "2",
@@ -47,6 +54,7 @@ const Flow = () => {
         onEdgesChange={onEdgesChange}
         onNodesChange={onNodesChange}
         onConnect={onConnect}
+        nodeTypes={nodeTypes}
       >
         <Background />
         <Controls />
