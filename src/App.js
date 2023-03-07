@@ -1,8 +1,8 @@
-import "./App.css";
-import Flow from "./components/Flow";
+import React from "react";
+import Flow from "./components/Flow.jsx";
 
-function App() {
+const App = () => {
   return <Flow />;
-}
+};
 
 export default App;

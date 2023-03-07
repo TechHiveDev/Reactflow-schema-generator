@@ -8,30 +8,33 @@ import ReactFlow, {
 } from "reactflow";
 import { useState, useCallback } from "react";
 import TextUpdaterNode from "./TextUpdaterNode.jsx";
-import "./text-updater-node.css";
+import Sidebar from "./Sidebar.jsx";
+import "./text-updater-node.module.css";
 
 const nodeTypes = { textUpdater: TextUpdaterNode };
 
 const Flow = () => {
-  console.log("loaded");
-  const initialEdges = [{ id: "1-2", source: "1", target: "2" }];
-  const initialNodes = [
-    {
-      id: "1",
-      position: { x: 0, y: 0 },
-      data: { label: "Hello" },
-      type: "textUpdater",
-      data: { value: 123 },
-    },
-    {
-      id: "2",
-      position: { x: 100, y: 100 },
-      data: { label: "World" },
-    },
-  ];
-
-  const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(initialEdges);
+  const [nodes, setNodes] = useState([]);
+  const [edges, setEdges] = useState([]);
+  const [id, setId] = useState(1);
+  const addNode = (entityData) => {
+    setNodes([
+      ...nodes,
+      {
+        id: `${id}`,
+        type: "textUpdater",
+        position: {
+          x: (Math.random() * window.innerWidth) / 2,
+          y: (Math.random() * window.innerHeight) / 2,
+        },
+        data: {
+          id: `${id}`,
+          entityData,
+        },
+      },
+    ]);
+    setId((id) => id + 1);
+  };
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -47,18 +50,21 @@ const Flow = () => {
   );
 
   return (
-    <div style={{ height: "100vh" }}>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onEdgesChange={onEdgesChange}
-        onNodesChange={onNodesChange}
-        onConnect={onConnect}
-        nodeTypes={nodeTypes}
-      >
-        <Background />
-        <Controls />
-      </ReactFlow>
+    <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+      <div style={{ height: "100vh", width: "80vw" }}>
+        <ReactFlow
+          nodes={nodes}
+          edges={edges}
+          onEdgesChange={onEdgesChange}
+          onNodesChange={onNodesChange}
+          onConnect={onConnect}
+          nodeTypes={nodeTypes}
+        >
+          <Background />
+          <Controls />
+        </ReactFlow>
+      </div>
+      <Sidebar addNode={addNode} />
     </div>
   );
 };

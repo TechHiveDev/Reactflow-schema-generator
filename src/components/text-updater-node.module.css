@@ -6,23 +6,6 @@
   padding: 0;
 }
 
-.entity-box {
-  border: 2px solid black;
-  border-radius: px;
-}
-
-.text-updater-node {
-  padding: 5px;
-  border-radius: 5px;
-  background: white;
-}
-
-.text-updater-node label {
-  display: block;
-  color: #777;
-  font-size: 12px;
-}
-
 table,
 th {
   border: 2px solid black;

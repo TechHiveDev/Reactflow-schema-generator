@@ -1,38 +1,23 @@
-const Entity = () => {
+const Entity = ({ data }) => {
+  const { entityData } = data;
+  const { entityName, fieldName, fieldType, fieldConstrains } = entityData;
+  console.error(entityData);
   return (
     <table>
-      <th colSpan={3}>Student</th>
+      <thead>
+        <tr>
+          <th colSpan={3}>{entityName}</th>
+        </tr>
+      </thead>
       <tr>
         <td>
-          <input type="text" style={{ display: "block" }} />
+          <input type="text" value={fieldName} />
         </td>
         <td>
-          <input type="text" style={{ display: "block" }} />
+          <input type="text" value={fieldType} />
         </td>
         <td>
-          <input type="text" style={{ display: "block" }} />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="text" style={{ display: "block" }} />
-        </td>
-        <td>
-          <input type="text" style={{ display: "block" }} />
-        </td>
-        <td>
-          <input type="text" style={{ display: "block" }} />
-        </td>
-      </tr>
-      <tr className="last-row">
-        <td>
-          <input type="text" style={{ display: "block" }} />
-        </td>
-        <td>
-          <input type="text" style={{ display: "block" }} />
-        </td>
-        <td>
-          <input type="text" style={{ display: "block" }} />
+          <input type="text" value={fieldConstrains} />
         </td>
       </tr>
     </table>

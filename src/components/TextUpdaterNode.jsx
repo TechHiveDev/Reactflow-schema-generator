@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import { Handle, Position } from "reactflow";
 import Entity from "./Entity";
 
@@ -9,6 +9,8 @@ function TextUpdaterNode({ data, isConnectable }) {
     console.log(evt.target.value);
   }, []);
 
+  console.log(data);
+
   return (
     <div className="text-updater-node">
       <Handle
@@ -17,9 +19,7 @@ function TextUpdaterNode({ data, isConnectable }) {
         isConnectable={isConnectable}
       />
       <div>
-        {/* <label htmlFor="text">Text:</label>
-        <input id="text" name="text" onChange={onChange} className="nodrag" /> */}
-        <Entity />
+        <Entity data={data} />
       </div>
       <Handle
         type="source"
