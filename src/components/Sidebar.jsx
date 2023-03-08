@@ -1,5 +1,5 @@
 import "./sidebar-style.module.css";
-import FieldData from "./FieldData.jsx";
+import FieldInput from "./FieldInput.jsx";
 import { useState } from "react";
 import { createContext } from "react";
 
@@ -31,7 +31,7 @@ const Sidebar = ({ addNode }) => {
       </form>
       <EntityContext.Provider value={{ entityData, setEntityData }}>
         {[...Array(numberFields)].map((_, i) => (
-          <FieldData key={i} fieldId={i} />
+          <FieldInput key={i} fieldId={i} />
         ))}
       </EntityContext.Provider>
       <svg

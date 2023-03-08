@@ -1,8 +1,12 @@
+import { useState } from "react";
+import FieldData from "./FieldData";
+
 const Entity = ({ data }) => {
   const { entityData } = data;
   const entityName = entityData.entityName;
   const fieldsData = JSON.parse(JSON.stringify(entityData));
   delete fieldsData.entityName;
+
   return (
     <table>
       <thead>
@@ -10,20 +14,15 @@ const Entity = ({ data }) => {
           <th colSpan={3}>{entityName}</th>
         </tr>
       </thead>
-      {Object.values(fieldsData).map((field) => {
+      {Object.values(fieldsData).map((field, i) => {
         const { fieldName, fieldConstrains, fieldType } = field;
         return (
-          <tr>
-            <td>
-              <input type="text" value={fieldName} />
-            </td>
-            <td>
-              <input type="text" value={fieldType} />
-            </td>
-            <td>
-              <input type="text" value={fieldConstrains} />
-            </td>
-          </tr>
+          <FieldData
+            key={i}
+            name={fieldName}
+            type={fieldType}
+            constrains={fieldConstrains}
+          />
         );
       })}
     </table>

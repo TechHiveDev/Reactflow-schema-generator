@@ -1,52 +1,42 @@
-import React, { useContext, useState } from "react";
-import styles from "./field-data.module.css";
-import { EntityContext } from "./Sidebar";
+import { useState } from "react";
 
-const FieldData = ({ fieldId }) => {
-  const { entityData, setEntityData } = useContext(EntityContext);
-  const [fieldData, setFieldData] = useState({});
-  const onChange = (e) => {
-    const value = e.target.value;
-    setFieldData((fieldData) => ({
-      ...fieldData,
-      [e.target.name]: value,
-    }));
-    setEntityData({ ...entityData, [fieldId]: fieldData });
-  };
-
+const FieldData = ({ name, type, constrains }) => {
+  const [fieldName, setFieldName] = useState(name);
+  const [fieldType, setFieldType] = useState(type);
+  const [fieldConstrains, setFieldConstrains] = useState(constrains);
   return (
-    <>
-      <fieldset>
-        <legend>Add new Field</legend>
-        <div>
-          <label>Name :</label>
-          <input
-            type="text"
-            name="fieldName"
-            className={styles.sidebarInput}
-            onChange={onChange}
-          />
-        </div>
-        <div>
-          <label>Type :</label>
-          <input
-            type="text"
-            name="fieldType"
-            className={styles.sidebarInput}
-            onChange={onChange}
-          />
-        </div>
-        <div>
-          <label>Constrains :</label>
-          <input
-            type="text"
-            name="fieldConstrains"
-            className={styles.sidebarInput}
-            onChange={onChange}
-          />
-        </div>
-      </fieldset>
-    </>
+    <tr>
+      <td>
+        <input
+          type="text"
+          value={fieldName}
+          onChange={(e) => {
+            setFieldName(e.target.value);
+            console.log(e.target.value);
+          }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          value={fieldType}
+          onChange={(e) => {
+            setFieldType(e.target.value);
+            console.log(e.target.value);
+          }}
+        />
+      </td>
+      <td>
+        <input
+          type="text"
+          value={fieldConstrains}
+          onChange={(e) => {
+            setFieldConstrains(e.target.value);
+            console.log(e.target.value);
+          }}
+        />
+      </td>
+    </tr>
   );
 };
 

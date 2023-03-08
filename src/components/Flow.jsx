@@ -31,6 +31,7 @@ const Flow = () => {
           id: `${id}`,
           entityData,
         },
+        value: { data: 1 },
       },
     ]);
     setId((id) => id + 1);
