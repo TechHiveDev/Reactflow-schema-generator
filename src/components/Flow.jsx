@@ -10,6 +10,9 @@ import { useState, useCallback } from "react";
 import TextUpdaterNode from "./TextUpdaterNode.jsx";
 import Sidebar from "./Sidebar.jsx";
 import "./text-updater-node.module.css";
+import validFields from "../util/validate";
+
+import toast, { Toaster } from "react-hot-toast";
 
 const nodeTypes = { textUpdater: TextUpdaterNode };
 
@@ -18,6 +21,13 @@ const Flow = () => {
   const [edges, setEdges] = useState([]);
   const [id, setId] = useState(1);
   const addNode = (entityData) => {
+    const validData = validFields(entityData);
+    if (!validData) {
+      toast.error("error, Data aren't complete", {
+        duration: 2000,
+      });
+      return;
+    }
     setNodes([
       ...nodes,
       {
@@ -66,6 +76,7 @@ const Flow = () => {
         </ReactFlow>
       </div>
       <Sidebar addNode={addNode} />
+      <Toaster />
     </div>
   );
 };

@@ -1,17 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import styles from "./field-data.module.css";
 import { EntityContext } from "./Sidebar";
 
 const FieldInput = ({ fieldId }) => {
   const { entityData, setEntityData } = useContext(EntityContext);
-  const [fieldData, setFieldData] = useState({});
+
+  const fieldNameRef = useRef();
+  const fieldTypeRef = useRef();
+  const fieldConstrainsRef = useRef();
+
   const onChange = (e) => {
-    const value = e.target.value;
-    setFieldData((fieldData) => ({
-      ...fieldData,
-      [e.target.name]: value,
-    }));
-    setEntityData({ ...entityData, [fieldId]: fieldData });
+    setEntityData({
+      ...entityData,
+      [fieldId]: {
+        fieldName: fieldNameRef.current.value,
+        fieldType: fieldTypeRef.current.value,
+        fieldConstrains: fieldConstrainsRef.current.value,
+      },
+    });
   };
 
   return (
@@ -22,27 +28,27 @@ const FieldInput = ({ fieldId }) => {
           <label>Name :</label>
           <input
             type="text"
-            name="fieldName"
             className={styles.sidebarInput}
             onChange={onChange}
+            ref={fieldNameRef}
           />
         </div>
         <div>
           <label>Type :</label>
           <input
             type="text"
-            name="fieldType"
             className={styles.sidebarInput}
             onChange={onChange}
+            ref={fieldTypeRef}
           />
         </div>
         <div>
           <label>Constrains :</label>
           <input
             type="text"
-            name="fieldConstrains"
             className={styles.sidebarInput}
             onChange={onChange}
+            ref={fieldConstrainsRef}
           />
         </div>
       </fieldset>

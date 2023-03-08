@@ -8,6 +8,7 @@ function TextUpdaterNode({ data, isConnectable }) {
   const onChange = useCallback((evt) => {
     console.log(evt.target.value);
   }, []);
+
   console.log(data);
   return (
     <div className="text-updater-node">
@@ -19,19 +20,6 @@ function TextUpdaterNode({ data, isConnectable }) {
       <div>
         <Entity data={data} />
       </div>
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        id="a"
-        style={handleStyle}
-        isConnectable={isConnectable}
-      />
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        id="b"
-        isConnectable={isConnectable}
-      />
     </div>
   );
 }
