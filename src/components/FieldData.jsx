@@ -1,15 +1,19 @@
-import React, { useContext } from "react";
-import { useState } from "react";
-import Entity from "./Entity";
+import React, { useContext, useState } from "react";
 import styles from "./field-data.module.css";
 import { EntityContext } from "./Sidebar";
 
-const FieldData = ({ entityName }) => {
+const FieldData = ({ fieldId }) => {
   const { entityData, setEntityData } = useContext(EntityContext);
-
+  const [fieldData, setFieldData] = useState({});
   const onChange = (e) => {
-    setEntityData({ ...entityData, [e.target.name]: e.target.value });
+    const value = e.target.value;
+    setFieldData((fieldData) => ({
+      ...fieldData,
+      [e.target.name]: value,
+    }));
+    setEntityData({ ...entityData, [fieldId]: fieldData });
   };
+
   return (
     <>
       <fieldset>

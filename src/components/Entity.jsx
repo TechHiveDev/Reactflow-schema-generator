@@ -1,7 +1,8 @@
 const Entity = ({ data }) => {
   const { entityData } = data;
-  const { entityName, fieldName, fieldType, fieldConstrains } = entityData;
-  console.error(entityData);
+  const entityName = entityData.entityName;
+  const fieldsData = JSON.parse(JSON.stringify(entityData));
+  delete fieldsData.entityName;
   return (
     <table>
       <thead>
@@ -9,17 +10,22 @@ const Entity = ({ data }) => {
           <th colSpan={3}>{entityName}</th>
         </tr>
       </thead>
-      <tr>
-        <td>
-          <input type="text" value={fieldName} />
-        </td>
-        <td>
-          <input type="text" value={fieldType} />
-        </td>
-        <td>
-          <input type="text" value={fieldConstrains} />
-        </td>
-      </tr>
+      {Object.values(fieldsData).map((field) => {
+        const { fieldName, fieldConstrains, fieldType } = field;
+        return (
+          <tr>
+            <td>
+              <input type="text" value={fieldName} />
+            </td>
+            <td>
+              <input type="text" value={fieldType} />
+            </td>
+            <td>
+              <input type="text" value={fieldConstrains} />
+            </td>
+          </tr>
+        );
+      })}
     </table>
   );
 };

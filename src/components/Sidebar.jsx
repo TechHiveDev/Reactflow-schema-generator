@@ -3,12 +3,17 @@ import FieldData from "./FieldData.jsx";
 import { useState } from "react";
 import { createContext } from "react";
 
-export const EntityContext = createContext(null);
+export const EntityContext = createContext([]);
 const Sidebar = ({ addNode }) => {
   const [entityData, setEntityData] = useState({});
   const [entityName, setEntityName] = useState("");
+  const [numberFields, setNumberFields] = useState(1);
 
-  const onCreateNewEntity = () => {
+  const handleCreateField = () => {
+    setNumberFields(numberFields + 1);
+  };
+
+  const handleCreateEntities = () => {
     addNode({ entityName, ...entityData });
   };
 
@@ -25,7 +30,9 @@ const Sidebar = ({ addNode }) => {
         <input type="text" onChange={handleOnChange} value={entityName} />
       </form>
       <EntityContext.Provider value={{ entityData, setEntityData }}>
-        <FieldData entityName={entityName} />
+        {[...Array(numberFields)].map((_, i) => (
+          <FieldData key={i} fieldId={i} />
+        ))}
       </EntityContext.Provider>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -36,10 +43,11 @@ const Sidebar = ({ addNode }) => {
           display: "block",
           cursor: "pointer",
         }}
+        onClick={handleCreateField}
       >
         <path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z" />
       </svg>
-      <button onClick={onCreateNewEntity}>Create Entity</button>
+      <button onClick={handleCreateEntities}>Create Entity</button>
     </aside>
   );
 };
