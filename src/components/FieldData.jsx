@@ -1,38 +1,20 @@
 import { useState } from "react";
 
-const FieldData = ({ name, type, constrains }) => {
-  const [fieldName, setFieldName] = useState(name);
-  const [fieldType, setFieldType] = useState(type);
-  const [fieldConstrains, setFieldConstrains] = useState(constrains);
+const FieldData = () => {
+  const fieldNameRef = useRef();
+  const fieldTypeRef = useRef();
+  const fieldConstrainsRef = useRef();
 
   return (
     <tr>
       <td>
-        <input
-          type="text"
-          value={fieldName}
-          onChange={(e) => {
-            setFieldName(e.target.value);
-          }}
-        />
+        <input type="text" value={fieldName} ref={fieldNameRef} />
       </td>
       <td>
-        <input
-          type="text"
-          value={fieldType}
-          onChange={(e) => {
-            setFieldType(e.target.value);
-          }}
-        />
+        <input type="text" value={fieldType} ref={fieldTypeRef} />
       </td>
       <td>
-        <input
-          type="text"
-          value={fieldConstrains}
-          onChange={(e) => {
-            setFieldConstrains(e.target.value);
-          }}
-        />
+        <input type="text" value={fieldConstrains} ref={fieldConstrainsRef} />
       </td>
     </tr>
   );

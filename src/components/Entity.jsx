@@ -1,4 +1,3 @@
-import { useState } from "react";
 import FieldData from "./FieldData";
 
 const Entity = ({ data }) => {
@@ -15,15 +14,7 @@ const Entity = ({ data }) => {
         </tr>
       </thead>
       {Object.values(fieldsData).map((field, i) => {
-        const { fieldName, fieldConstrains, fieldType } = field;
-        return (
-          <FieldData
-            key={i}
-            name={fieldName}
-            type={fieldType}
-            constrains={fieldConstrains}
-          />
-        );
+        return <FieldData key={i} />;
       })}
     </table>
   );
