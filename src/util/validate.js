@@ -1,10 +1,14 @@
 const validFields = (data) => {
   const toBeValidated = JSON.parse(JSON.stringify(data));
   const { entityName } = toBeValidated;
-  if (!entityName.trim()) {
+  if (emptyData(entityName)) {
     return false;
   }
   delete toBeValidated.entityName;
+  if (Object.values(toBeValidated).length === 0) {
+    return false;
+  }
+
   let valid = true;
   Object.values(toBeValidated).forEach((field) => {
     const { fieldName, fieldType } = field;

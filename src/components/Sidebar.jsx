@@ -2,6 +2,7 @@ import "./sidebar-style.module.css";
 import FieldInput from "./FieldInput.jsx";
 import { useState } from "react";
 import { createContext } from "react";
+import { addEntity } from "../util/schema";
 
 export const EntityContext = createContext([]);
 const Sidebar = ({ addNode }) => {
@@ -14,6 +15,7 @@ const Sidebar = ({ addNode }) => {
   };
 
   const handleCreateEntities = () => {
+    addEntity({ entityName, ...entityData });
     addNode({ entityName, ...entityData });
   };
 
