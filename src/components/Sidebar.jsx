@@ -1,8 +1,9 @@
-import "./sidebar-style.module.css";
+import "../styles/sidebar-style.module.css";
 import FieldInput from "./FieldInput.jsx";
 import { useState } from "react";
 import { createContext } from "react";
 import { addEntity } from "../util/schema";
+import { submitDataToServer } from "../util/schema";
 
 export const EntityContext = createContext([]);
 const Sidebar = ({ addNode }) => {
@@ -21,6 +22,10 @@ const Sidebar = ({ addNode }) => {
 
   const handleOnChange = (e) => {
     setEntityName(e.target.value);
+  };
+
+  const handleCreateSchema = () => {
+    submitDataToServer();
   };
 
   return (
@@ -50,6 +55,7 @@ const Sidebar = ({ addNode }) => {
         <path d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z" />
       </svg>
       <button onClick={handleCreateEntities}>Create Entity</button>
+      <button onClick={handleCreateSchema}>Create Schema</button>
     </aside>
   );
 };

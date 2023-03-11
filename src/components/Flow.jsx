@@ -9,7 +9,7 @@ import ReactFlow, {
 import { useState, useCallback } from "react";
 import TextUpdaterNode from "./TextUpdaterNode.jsx";
 import Sidebar from "./Sidebar.jsx";
-import "./text-updater-node.module.css";
+import "../styles/text-updater-node.module.css";
 import validFields from "../util/validate";
 
 import toast, { Toaster } from "react-hot-toast";

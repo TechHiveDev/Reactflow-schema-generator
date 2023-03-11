@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from "react";
-import styles from "./field-data.module.css";
+import styles from "../styles/field-data.module.css";
 import { EntityContext } from "./Sidebar";
 
 const FieldInput = ({ fieldId }) => {

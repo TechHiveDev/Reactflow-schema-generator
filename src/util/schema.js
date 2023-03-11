@@ -1,7 +1,34 @@
+import Axios from "axios";
+
 const json = {
   definitions: {},
   type: "object",
   properties: {},
+};
+
+export const submitDataToServer = () => {
+  console.log(json);
+
+  fetch("http://localhost:3001/download", {
+    responseType: "blob",
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(json),
+  })
+    .then((res) => res.blob())
+    .then((blob) => {
+      const fileURL = window.URL.createObjectURL(blob);
+      const fileLink = document.createElement("a");
+      fileLink.href = fileURL;
+      const fileName = "schema.prisma";
+      fileLink.setAttribute("download", fileName);
+      fileLink.setAttribute("target", "_blank");
+      document.body.appendChild(fileLink);
+      fileLink.click();
+      fileLink.remove();
+    });
 };
 
 export const deleteOldJsonField = (entityName, fieldName) => {

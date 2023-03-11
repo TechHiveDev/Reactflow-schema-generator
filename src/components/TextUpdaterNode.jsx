@@ -2,8 +2,6 @@ import { useCallback } from "react";
 import { Handle, Position } from "reactflow";
 import Entity from "./Entity";
 
-const handleStyle = { left: 10 };
-
 function TextUpdaterNode({ data, isConnectable }) {
   const onChange = useCallback((evt) => {
     console.log(evt.target.value);
@@ -14,6 +12,11 @@ function TextUpdaterNode({ data, isConnectable }) {
       <Handle
         type="target"
         position={Position.Top}
+        isConnectable={isConnectable}
+      />
+      <Handle
+        type="source"
+        position={Position.Bottom}
         isConnectable={isConnectable}
       />
       <div>
