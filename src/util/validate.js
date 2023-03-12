@@ -12,7 +12,6 @@ const validFields = (data) => {
   let valid = true;
   Object.values(toBeValidated).forEach((field) => {
     const { fieldName, fieldType } = field;
-    console.log(fieldName, fieldType);
     if (emptyData(fieldName) || emptyData(fieldType)) {
       valid = false;
     }

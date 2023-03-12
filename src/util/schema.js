@@ -7,8 +7,6 @@ const json = {
 };
 
 export const submitDataToServer = () => {
-  console.log(json);
-
   fetch("http://localhost:3001/download", {
     responseType: "blob",
     method: "POST",
@@ -51,7 +49,6 @@ export const addEntity = (entityData) => {
   json["properties"][entityName] = {
     $ref: `#/definitions/${entityName}`,
   };
-  console.log(json);
 };
 
 export const editJson = (entityName, fieldName, fieldType, fieldConstrains) => {
@@ -62,7 +59,6 @@ export const editJson = (entityName, fieldName, fieldType, fieldConstrains) => {
       type: fieldType,
     },
   };
-  console.log(json);
 };
 
 export const initializeJsonSchema = () => {

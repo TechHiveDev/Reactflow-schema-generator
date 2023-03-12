@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { editJson, deleteOldJsonField } from "../util/schema";
 
 const FieldData = ({ entityName, name, type, constrains }) => {
@@ -10,6 +10,16 @@ const FieldData = ({ entityName, name, type, constrains }) => {
   const fieldTypeRef = useRef();
   const fieldConstrainsRef = useRef();
 
+  const prevFieldName = useRef();
+  const prevFieldType = useRef();
+  const prevFieldConstrains = useRef();
+
+  useEffect(() => {
+    prevFieldName.current = fieldName;
+    prevFieldType.current = fieldType;
+    prevFieldConstrains.current = fieldConstrains;
+  }, [fieldName, fieldType, fieldConstrains]);
+
   const updateJsonSchema = () => {
     const fieldName = fieldNameRef.current.value;
     const fieldType = fieldTypeRef.current.value;
@@ -18,18 +28,19 @@ const FieldData = ({ entityName, name, type, constrains }) => {
   };
 
   const handleChangeName = (e) => {
-    //deleteOldJsonField(entityName, fieldNameRef.previous.value);
+    deleteOldJsonField(entityName, prevFieldName.current);
     updateJsonSchema();
-    console.log("old", e.target.value);
     setFieldName(e.target.value);
   };
 
   const handleChangeType = (e) => {
+    deleteOldJsonField(entityName, prevFieldType.current);
     setFieldType(e.target.value);
     updateJsonSchema();
   };
 
   const handleChangeConstrains = (e) => {
+    deleteOldJsonField(entityName, prevFieldConstrains.current);
     setFieldConstrains(e.target.value);
     updateJsonSchema();
   };
